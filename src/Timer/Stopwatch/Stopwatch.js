@@ -1,4 +1,5 @@
 import React from "react";
+import Button from '@material-ui/core/Button';
 
 class Stopwatch extends React.Component {
     constructor(props) {
@@ -25,17 +26,14 @@ class Stopwatch extends React.Component {
         }, 10)
     }
 
-    stopTimer = () => {
-        this.setState({ timerOn: false });                      //timer is off
-        clearInterval(this.timer);                              //stop counting
-      };
-
-      resetTimer = () => {
+    resetTimer = () => {
         this.setState({
-          timerStart: 0,
-          timerTime: 0
+            timerOn: false,
+            timerStart: 0,
+            timerTime: 0
         });
-      };
+        clearInterval(this.timer);
+    };
 
 
 
@@ -57,24 +55,21 @@ class Stopwatch extends React.Component {
 
         return (
         <div className="Stopwatch">
-            <div className="Stopwatch-header">Stopwatch</div>
-            <div className="Stopwatch-Display">
+            <div className="Stopwatch-Display" style={{marginBottom:"10px"}}>
                 {hours} : {minutes} : {seconds} : {centiseconds}
             </div>
-            
-            {/* below conditionally renders buttons based on the stopwatches state */}
-            {this.state.timerOn === false && this.state.timerTime === 0 && (
-                <button onClick={this.startTimer}>Start</button>
-            )}
-            {this.state.timerOn === true && (
-                <button onClick={this.stopTimer}>Stop</button>
-            )}
-            {this.state.timerOn === false && this.state.timerTime > 0 && (
-                <button onClick={this.startTimer}>Resume</button>
-            )}
-            {this.state.timerOn === false && this.state.timerTime > 0 && (
-                <button onClick={this.resetTimer}>Reset</button>
-            )}
+            <div style={{display:"flex", justifyContent:"space-evenly" }}>
+                <div >
+                    <Button variant="outlined" color="primary" onClick={this.startTimer}>
+                        Start
+                    </Button>
+                </div>            
+                <div >
+                    <Button variant="outlined" color="secondary" onClick={this.resetTimer}>
+                        Reset
+                    </Button>
+                </div>
+            </div>
         </div>
         );
     }
