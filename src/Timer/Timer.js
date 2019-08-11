@@ -4,7 +4,7 @@ import "./Timer.css"
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-class App extends React.Component  {
+class Timer extends React.Component  {
 
   render() {
     return (
@@ -19,4 +19,4 @@ class App extends React.Component  {
   }
 }
 
-export default App;
+export default Timer;
